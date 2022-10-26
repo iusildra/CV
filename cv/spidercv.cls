@@ -88,7 +88,7 @@
 \newlength\sidewidth
 \setlength\sidewidth{0.33333\paperwidth-2\margin}
 \newlength\mainwidth
-\setlength\mainwidth{\paperwidth-4\margin-\sidewidth}
+\setlength\mainwidth{\paperwidth-4.5\margin-\sidewidth}
 \newlength\anglesize
 \setlength\anglesize{0.7cm}
 \newlength\topheight
