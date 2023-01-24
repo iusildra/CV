@@ -280,3 +280,6 @@ TSWLatexianTemp*
 /img
 /coverletter
 /results
+/about
+/*.txt
+/*.adoc
