@@ -2,226 +2,64 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
-\usepackage{framed}
-\usepackage{ragged2e}
-\usepackage{booktabs}
-\usepackage{fontawesome}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
 \usepackage{contour,ulem}
 \usepackage{enumitem, pifont}
+\usepackage{booktabs, multirow}
 \usepackage{multicol, multicolrule}
 
-\SetMCRule{extend-fill=false}
 
-\renewcommand{\ULdepth}{1.8pt}
-\contourlength{0.8pt}
+\pagestyle{fancy}
+\lhead{Lucas Nouguier}
+\rhead{\thepage~/~\pageref{LastPage}}
+\cfoot{center of the footer!}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
-\newcommand{\myUl}[1]{%
-	\uline{\phantom{#1}}%
-	\llap{\contour{white}{#1}}%
-}
-
-\hypersetup{
-	pdftitle={CV Lucas Nouguier}
-}
-
-\renewcommand{\ULdepth}{1.8pt}
-\contourlength{0.8pt}
-
-\newcommand{\ul}[1]{%
-  \uline{\phantom{#1}}%
-  \llap{\contour{white}{#1}}%
-}
+\setlength{\headheight}{14pt}
+\addtolength{\topmargin}{-14pt}
+\setlength{\footskip}{14pt}
 
 \begin{document}
-% ########################################
-%	TOP BAR
-% ########################################
-\begin{TopBar}{\ColorTextSide}
-  \Name{\ColorHighlight}{Lucas Nouguier}{5-month internship in computer science}{21}
-
-  %%% Contact
-  \TextSeparator{\ColorHighlight}{Contact}
-  \vspace{-0.7cm}
-  \begin{multicols}{2}
-    \begin{ItemList}{\ColorHighlight}
-      \item [\Large\faAt]\href{mailto:lucas.nouguier@protonmail.com}{lucas.nouguier@protonmail.com}
-      \item [\Large\faPhone] +33 7 81 76 81 96
-      \item [\Large\faHome] Montpellier, France
-      \columnbreak
-      \item [\Large\faGithub] \href{https://github.com/iusildra}{github.com/iusildra}
-      \item [\Large\faLinkedinSquare] \href{https://www.linkedin.com/in/lucas-nouguier/}{linkedin.com/in/lucas-nouguier}
-      \item [\Large\faLanguage] French
-    \end{ItemList}
-  \end{multicols}
-
-  %%% Interests
-  \vspace{-0.4cm}
-  \TextSeparator{\ColorHighlight}{Interests}
-  \vspace{-0.6cm}
-  \begin{multicols}{3}
-    \begin{ItemList}{\ColorHighlight}
-      \item [] Cycling
-      \item [] Hiking
-      \item [] Cooking
-    \end{ItemList}
-  \end{multicols}
-\end{TopBar}
-
-
-
-% ########################################
-%	SIDE BAR
-% ########################################
-\begin{SideBar}{\ColorBackground}{\ColorTextSide}
-
-  %%% Soft skills
-  \TextSeparatorBis{\ColorHighlight}{\Large\faUsers}{Soft skills}
-
-  \Label{\ColorHighlight}{Autonomous}
-  \Label{\ColorHighlight}{Energetic}\\
-  \vspace{0.2cm}
-  \Label{\ColorHighlight}{Teamwork oriented}\\
-  \vspace{0.2cm}
-  \Label{\ColorHighlight}{Proactive}
-  \Label{\ColorHighlight}{Curious}
-
-  \vspace{0.5cm}
-
-  %%% Hard skills
-  \TextSeparatorBis{\ColorHighlight}{\Large\faGears}{Hard skills}
-  \begin{ItemList}{\ColorHighlight}
-    \item [\large\faCode] Scala, Java, Swift, React\\Vue.Js, Node.js, Express,\\ Typescript, gRPC
-    \item [\large\faCubes] UML
-    \item [\large\faDatabase] PostgreSQL
-    \item [\large\faPencilSquareO] \LaTeX
-    \item [\large\faLinux] Archlinux
-  \end{ItemList}
-
-  % \vspace{0.2cm}
-
-  % \color{GreenIT}
-  % \dotfill
-  % \color{White}
-
-  % \vspace{0.2cm}
-  %%% Spider
-  % \begin{SpiderDiagram}{\ColorTextSide}{\ColorHighlight}
-  %     \addSkill{\hspace{1cm}\raisebox{1cm}{\includegraphics[width=0.30\linewidth]{web.png}}}{3}
-  %     \addSkill{\hspace{-0.5cm}\raisebox{1cm}{\includegraphics[width=0.125\linewidth]{oop.png}}}{3}
-  %     \addSkill{\includegraphics[width=0.10\linewidth]{scala-spiral.png}}{1}
-  %     \addSkill{\raisebox{-1.5cm}{\includegraphics[width=0.20\linewidth]{git.png}}}{2}
-  %     \addSkill{\raisebox{-1.5cm}{\includegraphics[width=0.15\linewidth]{tux.png}}}{2}
-  %     \addSkill{\includegraphics[width=0.15\linewidth]{psql.png}}{2}
-  % \end{SpiderDiagram}
-
-  \vspace{0.5cm}
-
-  %%% Languages
-  \TextSeparatorBis{\ColorHighlight}{\Large\faLanguage}{Languages}
-
-  \begin{tabular}{lll}
-              & English      & Chinese \\
-    \cmidrule{2-3}
-    Speaking  & Professional & A2      \\
-    \cmidrule{2-3}
-    Listening & C1           & A2      \\
-    \cmidrule{2-3}
-    Reading   & C1           & A2      \\
-    \cmidrule{2-3}
-    Writing   & Professional & A2
-  \end{tabular}
-
-  \vspace{0.5cm}
-  \TextSeparatorBis{\ColorHighlight}{\Large\faCertificate}{Certifications}
-  \begin{ItemList}{\ColorHighlight}
-    \item [\ding{226}] TOEIC : 950 / 990
-    \item [\ding{226}] Driver's license (Car)
-    \item [\ding{226}] First aid :
-    \begin{itemize}
-      \item In teams
-      \item In aquatic environment
-    \end{itemize}
-  \end{ItemList}
-
-  \vspace{0.75cm}
-  % References will be provided upon request
-\end{SideBar}
-
-
-
-% ########################################
-%	Picture
-% ########################################
+\thispagestyle{empty}
+\input{components/header.tex}
+\input{components/sidebar.tex}
 \DefineProfile{\ColorOther}{\ColorTextSide}{../img/profile_bw.jpg}
+\input{components/frontMain.tex}
 
+\pagebreak
+\newgeometry{left=2.5cm, bottom=3cm, top=2cm, right=2.5cm}
 
-
-
-% ########################################
-%	Main
-% ########################################
-\begin{MainPart}
-
-  \color{Black}
-  \MainTitleBis{\ColorHighlight}{\ColorTextMain}{About me}{\faUser}
-  \vspace{0.25cm}
-  Dynamic and enthusiastic student looking for a professionalization contract to gain strong knowledge and capabilities. I am particularly interested in functional programming, as I am currently learning Scala. I plan to continue learning effects frameworks such as Cats Effect and ZIO, or big data processing frameworks like Spark.
-  %%% Education
-  \MainTitleBis{\ColorHighlight}{\ColorTextMain}{Education}{\faGraduationCap}
-  \Experience
-  {\ColorHighlight}
-  {Engineering degree in Computer Science}
-  {\href{https://english.polytech.umontpellier.fr/}{Polytech Montpellier, France}}
-  {2021 -- 2024}
-  {
-    Polytech Montpellier is a French engineering school at Montpellier, France.\\
-    This degree is equivalent to a Master's degree
-
-    \begin{multicols}{2}
-      Major in Computer Science
-      \begin{ItemList}{\ColorHighlight}
-        \item [\ding{226}] Algorithms
-        \item [\ding{226}] Mobile applications
-        \item [\ding{226}] Software engineering
-        \item [\ding{226}] Mathematics (Algebra, Statistics)
-      \end{ItemList}
-      \columnbreak
-      Minor in Management
-      \begin{ItemList}{\ColorHighlight}
-        \item [\ding{226}] Cost analysis
-        \item [\ding{226}] Project management
-        \item [\ding{226}] Budgetary control
-      \end{ItemList}
-    \end{multicols}
-  }
-  \Experience
-  {\ColorHighlight}
-  {Preparatory classes}
-  {\href{https://www.umontpellier.fr/en/}{Montpellier University of Science, France}}
-  {2019 -- 2021}
-  {
-    A 2-year course leading to one of Polytech's highly selective engineering schools, with Mathematics and Physics as majors and Computer Science and Chemistry as minors.
-  }
-
-  %%% Experiences 
-  \MainTitleBis{\ColorHighlight}{\ColorTextMain}{Experience}{\faSuitcase}
-  \Experience
-  {\ColorHighlight}
-  {Assistant Software Engineer}
-  {Teads France}
-  {Jun. 2022 -- Aug. 2022}{
-    I worked in an agile workflow on both the back-end and front-end of their new demo console application. During the back-end development, I learned how to manage effects (I/O in this case) in Scala with the Cats Effect framework. I also learned about UI testing while working on the front-end with React and Cypress. I handled every feature from start to finish (coding, testing, deployment, maintenance). Once the internship was over, the back-end was fully functional, as was the front-end.
-  }
-  \Experience
-  {\ColorHighlight}
-  {Intern}
-  {L'Avion Jaune}
-  {Jun. 2020}
-  {
-    L'Avion Jaune is a cartography company located in Hérault, in the south of France. They use light aircrafts to map sites. This internship was my first job experience: I had to develop a web application to automate flight reports. It allowed me to gain a better understanding of web languages and Python.
-  }
-
-\end{MainPart}
+%%% Skills
+\MainTitle{\ColorHighlight}{\ColorTextMain}{Skills}{\faCode}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{crl}
+    \toprule
+    \multirow{3}{*}{Programming} & Paradigms                            & Functional, Object-Oriented           \\
+    \cmidrule{2-3}
+                                 & Languages                            & Scala, Java, Swift, Typescript        \\
+    \cmidrule{2-3}
+                                 & Frameworks \& libraries              & Cats Effect, Nestjs, React, Vue, gRPC \\
+    \midrule
+    \multirow{2}{*}{Databases}   & SQL                                  & PostgreSQL                            \\
+    \cmidrule{2-3}
+                                 & NoSQL                                & MongoDB                               \\
+    \midrule
+    \multirow{3}{*}{Tools}       & IDEs                                 & VSCode, IntelliJ                      \\
+    \cmidrule{2-3}
+                                 & Version control                      & Git, GitHub                           \\
+    \cmidrule{2-3}
+                                 & DevOps                               & Docker                                \\
+    \midrule
+    Operating systems            & \multicolumn{2}{c}{Archlinux, macOS}                                         \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 \end{document}
 
 
