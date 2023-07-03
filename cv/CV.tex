@@ -1,0 +1,342 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{pgffor}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{moresize}
+\usepackage{ragged2e}
+\usepackage{enumerate}
+\usepackage{fontawesome5}
+\usepackage{contour,ulem}
+\usepackage[scaled]{helvet}
+\usepackage{enumitem, pifont}
+\usepackage{booktabs, multirow}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol, multicolrule}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[a4paper, left=2cm, right=2cm, top=1.5cm, bottom=1.5cm]{geometry}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    OPTIONS                                   %
+% ---------------------------------------------------------------------------- %
+\renewcommand*\familydefault{\sfdefault} % Force the sans-serif version of any font used
+\usetikzlibrary{calc,positioning,backgrounds,matrix,shapes,decorations}
+\SetMCRule{extend-fill=false}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    LENGTHS                                   %
+% ---------------------------------------------------------------------------- %
+\newlength\margin\setlength\margin{0.5cm}
+\newlength\sidewidth\setlength\sidewidth{0.33333\paperwidth-2\margin}
+\newlength\mainwidth\setlength\mainwidth{\paperwidth-4.5\margin-\sidewidth}
+\newlength\anglesize\setlength\anglesize{0.7cm}
+\newlength\topheight\setlength\topheight{\sidewidth}
+\newlength\profilesize\setlength\profilesize{0.7\topheight}
+
+\setlength{\parindent}{0mm} % Suppress paragraph indentation
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    COLORS                                    %
+% ---------------------------------------------------------------------------- %
+\definecolor{Black}{HTML}{353535}
+\definecolor{White}{HTML}{FFFFFF}
+\definecolor{DarkGreen}{HTML}{252e25}
+\definecolor{GreenIT}{RGB}{76, 175, 80}
+
+\newcommand{\DefineColorMacros}[5] {%
+    \def\ColorTextSide{#1}
+    \def\ColorTextMain{#2}
+    \def\ColorHighlight{#3}
+    \def\ColorBackground{#4}
+    \def\ColorOther{#5}
+    \color{\ColorTextMain} % Default
+}
+
+\DefineColorMacros{White}{Black}{GreenIT}{Black}{DarkGreen}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                              FRONT PAGE SECTIONS                             %
+% ---------------------------------------------------------------------------- %
+\newenvironment{TopBar}[1]
+{\begin{textblock*}{\mainwidth} (\sidewidth+3\margin,\margin-0.4cm)\begin{center}\color{#1}}
+{\end{center}\end{textblock*}}
+
+\newenvironment{MainPart}
+{\begin{textblock*}{\mainwidth} (\sidewidth+3\margin,\topheight+3\margin-0.4cm)\begin{center}}
+{\end{center}\end{textblock*}}
+
+\newenvironment{SideBar}[2] {% Background color, Text color
+  \begin{tikzpicture}[remember picture,overlay]% put text anywhere    
+    \fill[fill=#1, shift={(current page.north west)}] % side and top background
+    (0,-\paperheight) -- (0,-\anglesize) --
+    (\anglesize,0) -- (\paperwidth,0) --
+    (\paperwidth,-\topheight-2\margin) --
+    (\sidewidth+2\margin+\anglesize,-\topheight-2\margin) --
+    (\sidewidth+2\margin,-\topheight-2\margin-\anglesize) --
+    (\sidewidth+2\margin,-\paperheight) --
+    cycle;
+    \draw [draw=#1, shift={(current page.north west)}, very thick]
+    (\paperwidth-0.5\margin,-\topheight-3\margin) --
+    (\paperwidth-0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
+    (\paperwidth-0.5\margin-0.5\anglesize,-\paperheight+0.5\margin) --
+    (\sidewidth+3\margin,-\paperheight+0.5\margin);
+  \end{tikzpicture}%
+  \begin{textblock*}{\sidewidth} (\margin,\topheight+3\margin-0.4cm)
+    \begin{center}\color{#2}}{\end{center}
+  \end{textblock*}
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    PICTURE                                   %
+% ---------------------------------------------------------------------------- %
+\newcommand{\DefineProfile}[3]{ % Background color, Highlight color, Img path
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, draw=#2, rounded corners=0.5mm, very thick,
+      shift={(current page.north west)}, xshift=\anglesize, yshift=-\anglesize,
+    ](s1){};
+    \node [rectangle, draw=#2, rounded corners=0.5mm, very thick,
+      shift={(current page.north west)}, xshift=(\sidewidth+2\margin), yshift=-(\sidewidth+2\margin),
+    ](s2){};
+    \draw [draw=#2, very thick]
+    (s1) -- (s2);
+    \node[
+      shift={(current page.north west)},
+      xshift=(\sidewidth+2\margin)/2,
+      yshift=-(\sidewidth+2\margin)/2,
+      chamfered rectangle, draw=#2, very thick,
+      minimum size=\profilesize,
+      fill=#1,
+      path picture={
+              \node at (path picture bounding box.center){\includegraphics[height=\profilesize]{#3}};
+          }]
+    {};
+  \end{tikzpicture}
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                  PAGE FRAMES                                 %
+% ---------------------------------------------------------------------------- %
+\newcommand{\rightframe}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw [draw=Black, shift={(current page.north west)}, very thick]
+    (\paperwidth-0.5\margin,-\topheight-3\margin) --
+    (\paperwidth-0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
+    (\paperwidth-0.5\margin-0.5\anglesize,-\paperheight+0.5\margin) --
+    (\sidewidth+3\margin,-\paperheight+0.5\margin);
+    \end{tikzpicture}
+}
+
+\newcommand{\leftframe}[0]{
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw [draw=Black, shift={(current page.north west)}, very thick]
+    (0.5\margin,-\topheight+12\margin) --
+    (0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
+    (0.5\margin+0.5\anglesize,-\paperheight+0.5\margin) --
+    (\sidewidth+30\margin,-\paperheight+0.5\margin);
+    \end{tikzpicture}
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    TITLES                                    %
+% ---------------------------------------------------------------------------- %
+\newcommand{\Name}[4]{{ % Highlight color, Name, Profession, Age
+  \HUGE{\textbf{\color{#1}#2 (#4 y.o.)}}\\
+  \vspace{0.35cm}
+  \Large{#3}
+}}
+
+\newcommand{\TitleOne}[3]{ % Highlight color, Left text, Right text
+  \begin{tikzpicture}[baseline]
+    \node[very thin, anchor=west]
+    at (0,0) (box1)
+    {\textbf{\Large\color{#1}#2}};
+    \node[very thin, anchor=east]
+    at (0.99\textwidth,0) (square)
+    {\textbf{\Large\color{#1}#3}};
+    \path[draw=GreenIT, line width=0.5mm, inner sep=0pt] (box1) -- (square);
+  \end{tikzpicture}
+}
+
+\newcommand{\TitleTwo}[3]{ % Highlight color, Left content, Right content
+  \noindent\makebox[\linewidth]{\raisebox{-.4ex}{\textbf{\large{#2}}}\hspace{1ex}
+    {\color{#1}\hrulefill}
+    \hspace{1ex}\raisebox{-.4ex}{\textbf{\large{#3}}}}
+}
+
+\newcommand{\TitleThree}[2]{ % Highlight color, Text
+  \noindent\makebox[\linewidth]{{\color{#1}\hrulefill}
+    \hspace{1ex}\raisebox{-.4ex}{\textbf{\large{#2}}}
+    \hspace{1ex}{\color{#1}\hrulefill}}
+}
+
+\newcommand{\Experience}[4]{ %Highlight color,  Ttile, Left subtitle, Right subtitle, Description
+  \begin{flushleft}
+    \large{\textbf{#1\hfill{\small\color{Black}#3}}}\\\vspace{-.4ex}
+    \small{\dotfill\hspace{1ex}\raisebox{-.4ex}{\color{Black}\textbf{#2}}}\\
+    \normalsize{#4}% Description
+  \end{flushleft}
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                    OTHERS                                    %
+% ---------------------------------------------------------------------------- %
+\newenvironment{ItemList}[1]{ % Bullet color
+  \renewcommand{\descriptionlabel}[1]{%
+    \hspace{0.2cm}
+    \def\temp{##1}\ifx\temp\empty%
+        \hspace\labelsep{\textbf{\color{#1}\tiny\faSquare}}% Default bullet
+    \else
+        \hspace\labelsep{\textbf{\color{#1}##1}}
+    \fi
+  }%
+  \begin{description}
+}{\end{description}}
+
+\newcommand{\Label}[2]{% Highlight color, Text
+    \tikz[baseline]
+    \node[anchor=base, draw=#1, rounded corners,
+          inner xsep=1ex, inner ysep =0.75ex,
+          text height=1.5ex, text depth=.25ex, thick]{#2};
+}
+
+\newcommand{\grid}[3]{%
+  \renewcommand*{\do}[1]{\item ##1}%
+  \begin{multicols}{#1}%
+    \begin{enumerate}%
+      \foreach\x in {#2} {\item[#3] \x}
+    \end{enumerate}%
+  \end{multicols}
+}
+
+\newcommand{\dashedline}[1]{\tabucline[0.1pt black!40 off 2pt]{#1}}
+
+\renewcommand{\ULdepth}{1.8pt}
+
+\newcommand{\ul}[1]{%
+	\uline{\phantom{#1}}%
+	\llap{\contour{white}{#1}}%
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                   DOCUMENT                                   %
+% ---------------------------------------------------------------------------- %
+\def\cvSubject{\texttt{Option.empty[String]}}
+\def\myName{Lucas Nouguier}
+
+\pagestyle{fancy}
+\lhead{\myName}
+\chead{\cvSubject}
+\rhead{\thepage~/~\pageref{LastPage}}
+\cfoot{}
+
+
+\begin{document}
+\setlength{\headheight}{13.6pt}.
+\addtolength{\topmargin}{-1.6pt}.
+
+\thispagestyle{empty}
+\input{components/header.tex}
+\input{components/sidebar.tex}
+\DefineProfile{\ColorOther}{\ColorTextSide}{img/profile_bw.jpg}
+\input{components/frontMain.tex}
+
+\pagebreak
+
+\leftframe%
+
+% ---------------------------------------------------------------------------- %
+%                                   PROJECTS                                   %
+% ---------------------------------------------------------------------------- %
+\TitleOne{\ColorHighlight}{Projects}{\faLaptopCode}
+\Experience{\href{https://github.com/bde-polytech-montpellier}{Student Union Website (link)}}{Student Union}{2022---.}{
+  I rebuilt from scratch the website of the student union of my school. I began with React + Express, then migrated to Nestjs + Prisma \& Nextjs. It helped me realize how important are design patterns
+
+  The front-end, back-end and the database (PostgreSQL) are deployed on a Dokku server within Polytech, with a custom domain name hosted on Google Domains
+}
+
+\Experience{\href{https://github.com/iusildra/scalafix-remove-tokens}{Scalafix Remove Tokens (link)}}{Open-source}{2023---.}{
+  While working on the Scala Debug Adapter with \ul{\href{https://scalameta.org/munit/}{MUnit}}, I often forgot to remove the \texttt{.only} test tag before pushing my code (resulting in CI crash). So I created a \ul{\href{https://scalacenter.github.io/scalafix}{Scalafix}} rule to remove all the \texttt{.only} tags from my codebase. Then I plan to add some configurations to make it more generic and publish it for broader usage.
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                     MOOCs                                    %
+% ---------------------------------------------------------------------------- %
+\TitleOne{\ColorHighlight}{MOOCs}{\faChalkboardTeacher}
+\Experience%
+{\href{https://rockthejvm.com/courses/enrolled/1516063}{Advanced Scala}}
+{\href{https://rockthejvm.com/}{RockTheJVM}}
+{2023}
+{%
+  \begin{multicols}{3}
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{72}] Monads
+      \item[\ding{72}] Given \& Using (Implicits)
+      \item[\ding{72}] Variance
+      \item[\ding{72}] Concurrency
+      \item[\ding{72}] Type Classes
+      \item[\ding{72}] etc.
+    \end{ItemList}
+  \end{multicols}
+}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                 ASSOCIATIONS                                 %
+% ---------------------------------------------------------------------------- %
+\TitleOne{\ColorHighlight}{Associative}{\faIcon{share-alt}}
+
+\begin{multicols}{2}
+  \Experience{Organizer}{Sunny Tech}{2022---.}{
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{72}] \ul{\href{https://sunny-tech.io/}{https://sunny-tech.io/}}
+      \item[\ding{72}] Community Manager (\ul{\href{https://www.linkedin.com/company/18442273}{LinkedIn}}, \ul{\href{https://twitter.com/SunnyTech_MTP}{Twitter}})
+      \item[\ding{72}] Call For Papers reviewer (450 talks)
+      \item[\ding{72}] Track hosting (time management, Q\&A `helper')
+      \item[\ding{72}] Attendees / sponsors guidance 
+    \end{ItemList}
+  }
+  \Experience{Organizer}{ScalaIO}{2023---.}{
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{72}] \ul{\href{https://scala.io/}{https://scala.io/}}
+      \item[\ding{72}] Sponsors fishing
+    \end{ItemList}
+  }
+  \Experience{Volunteer (Upcoming)}{Scala Days Madrid}{Sept. 2023---.}{
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{72}] \ul{\href{https://scaladays.org/madrid-2023/}{https://scaladays.org/madrid-2023/}}
+      \item[\ding{72}] Track hosting
+    \end{ItemList}
+  }
+\end{multicols}
+\end{document}
+
+

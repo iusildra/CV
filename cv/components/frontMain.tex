@@ -1,65 +1,76 @@
 \begin{MainPart}
-
   \color{Black}
-  \MainTitle{\ColorHighlight}{\ColorTextMain}{About me}{\faUser}
+  \TitleOne{\ColorHighlight}{About me}{\faUser}
   \vspace{0.25cm}
   {
+    \vspace{-\baselineskip}
     \begin{flushleft}
-      Dynamic and enthusiastic student looking for a professionalization contract to gain strong knowledge and capabilities. I am particularly interested in functional programming, as I am currently learning Scala. I plan to continue learning effects frameworks such as Cats Effect and ZIO, or big data processing frameworks like Spark.
+      Enthusiastic baby software engineer, I enjoy learning new things and tend to go `in depth' rather than `in breadth'. I began involving myself in conferences since 2022 and joined the Scala open-source community in 2023.
+
+      Scala and functional programming are my current passions
+
+      ArchLinux user, I enjoy using the command line (git included even though I sometimes need to hard-reset to clean up\dots)
     \end{flushleft}
   }
-  %%% Education
-  \MainTitle{\ColorHighlight}{\ColorTextMain}{Education}{\faGraduationCap}
+  
+  % --------------------------------- Education -------------------------------- %
+  \TitleOne{\ColorHighlight}{Education}{\faGraduationCap}
   \Experience%
-  {\ColorHighlight}
   {\href{https://www.polytech.umontpellier.fr/images/ecole/Plaquettes/SPECIALITE_IG_2018_EN.pdf}{Engineering degree in Computer Science}}
   {\href{https://english.polytech.umontpellier.fr/}{Polytech Montpellier, France}}
   {2021 --- 2024}
   {
     Polytech Montpellier is a French engineering school at Montpellier, France.\\
     This degree is equivalent to a Master's degree
-
-    \begin{multicols}{2}
-      Major in Computer Science
-      \begin{ItemList}{\ColorHighlight}
-        \item [\ding{226}] Algorithms
-        \item [\ding{226}] Software engineering
-        \item [\ding{226}] Mathematics (Algebra, Statistics)
-      \end{ItemList}
-      \columnbreak%
-      Minor in Management
-      \begin{ItemList}{\ColorHighlight}
-        \item [\ding{226}] Cost analysis
-        \item [\ding{226}] Project management
-        \item [\ding{226}] Budgetary control
-      \end{ItemList}
-    \end{multicols}
   }
+
+  % -------------------------------- Main Skills ------------------------------- %
+  \TitleOne{\ColorHighlight}{Main Skills}{\faStar}
+  \vspace{0.3cm}
+
+  \begin{minipage}{0.55\textwidth}
+    \begin{description}
+      \item[Paradigms] Functional, Object-oriented
+      \item[Languages] Scala, Typescript, Java
+      \item[Frameworks \& libraries] Nestjs, React
+      \item[Databases] SQL (Postgres)
+      \item[Tools \& Platforms] Git, GitHub, Docker
+    \end{description}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.40\linewidth}
+    \begin{tabular}{ccc}
+      \includegraphics[height=25pt]{img/scala-spiral.png} & \includegraphics[height=25pt]{img/typescript.png} & \includegraphics[height=25pt]{img/java.png}       \\
+      \includegraphics[height=25pt]{img/nestjs.png}       & \includegraphics[height=25pt]{img/react.png}      & \includegraphics[height=25pt]{img/postgresql.png} \\
+      \includegraphics[height=25pt]{img/git.png}          & \includegraphics[height=25pt]{img/github.png}     & \includegraphics[height=25pt]{img/docker.png}
+    \end{tabular}
+  \end{minipage}
+  \vspace{0.3cm}
+
+  % -------------------------------- Experiences ------------------------------- %
+  \TitleOne{\ColorHighlight}{Experiences}{\faSuitcase}
   \Experience%
-  {\ColorHighlight}
-  {Preparatory classes}
-  {\href{https://www.umontpellier.fr/en/}{Montpellier University of Science, France}}
-  {2019 --- 2021}
+  {\href{https://github.com/scalacenter/scala-debug-adapter/pulls?q=is\%3Apr+author\%3Aiusildra+}{Software Engineer Intern (link)}}
+  {Scala Center, EPFL}
+  {Apr. 2023 --- Aug. 2023}
   {
-    A 2-year course leading to one of Polytech's highly selective engineering schools, with Mathematics and Physics as majors and Computer Science and Chemistry as minors.
+    \textit{Scala, Git, JVM, Scala-Java Interoperability, Reflection}
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{226}] Improved the Scala debugger in VS Code with a faster and more flexible evaluation mode
+      \item[\ding{226}] Encountered problems similar to those of a compiler: type checking, types resolution, overloads resolution\dots
+      \item[\ding{226}] I entend to keep upgrading it to make it more efficient, accepts more expressions, correct bugs\dots
+    \end{ItemList}
   }
-
-  %%% Experiences 
-  \MainTitle{\ColorHighlight}{\ColorTextMain}{Experience}{\faSuitcase}
   \Experience%
-  {\ColorHighlight}
   {Assistant Software Engineer}
   {Teads France}
   {Jun. 2022 --- Aug. 2022}
   {
-    I worked in an agile workflow on both the back-end and front-end on the new demo console application. I learned about pure functional programming in Scala with the Cats Effect framework, and UI testing with React and Cypress. I handled every feature from start to finish (coding, testing, deployment, maintenance). By the end of the internship, the back-end was fully functional, as was the front-end.
-  }
-  \Experience%
-  {\ColorHighlight}
-  {Intern}
-  {L'Avion Jaune}
-  {Jun. 2020}
-  {
-    L'Avion Jaune is a cartography company located in Hérault, in the south of France. They use light aircrafts to map sites. This internship was my first job experience: I had to develop a web application to automate flight reports. It allowed me to gain a better understanding of web languages and Python.
+    \textit{Scala, Cats-Effect, gRPC, MySQL, React (TS), Git, Cypress}
+
+    \begin{ItemList}{\ColorHighlight}
+      \item[\ding{226}] Full-stack development of the v2 of their demo application
+      \item[\ding{226}] Handled each feature from the database to the UI (code, test, deploy)
+    \end{ItemList}
   }
 \end{MainPart}
