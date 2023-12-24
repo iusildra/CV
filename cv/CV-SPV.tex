@@ -78,7 +78,7 @@
 {\end{center}\end{textblock*}}
 
 \newenvironment{MainPart}
-{\begin{textblock*}{\mainwidth} (\sidewidth+3\margin,\topheight+3\margin-0.4cm)\begin{center}}
+{\begin{textblock*}{\mainwidth} (\sidewidth+\margin,\topheight+\margin-0.4cm)\begin{center}}
 {\end{center}\end{textblock*}}
 
 \newenvironment{SideBar}[2] {% Background color, Text color
@@ -86,18 +86,18 @@
     \fill[fill=#1, shift={(current page.north west)}] % side and top background
     (0,-\paperheight) -- (0,-\anglesize) --
     (\anglesize,0) -- (\paperwidth,0) --
-    (\paperwidth,-\topheight-2\margin) --
-    (\sidewidth+2\margin+\anglesize,-\topheight-2\margin) --
-    (\sidewidth+2\margin,-\topheight-2\margin-\anglesize) --
-    (\sidewidth+2\margin,-\paperheight) --
+    (\paperwidth,-\topheight) --
+    (\sidewidth+\anglesize,-\topheight) --
+    (\sidewidth,-\topheight-\anglesize) --
+    (\sidewidth,-\paperheight) --
     cycle;
-    \draw [draw=#1, shift={(current page.north west)}, very thick]
-    (\paperwidth-0.5\margin,-\topheight-3\margin) --
-    (\paperwidth-0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
-    (\paperwidth-0.5\margin-0.5\anglesize,-\paperheight+0.5\margin) --
-    (\sidewidth+3\margin,-\paperheight+0.5\margin);
+    % \draw [draw=#1, shift={(current page.north west)}, very thick]
+    % (\paperwidth-\margin,-\topheight-3\margin) --
+    % (\paperwidth-\margin,-\paperheight+0.5\margin+0.5\anglesize) --
+    % (\paperwidth-\margin-0.5\anglesize,-\paperheight+0.5\margin) --
+    % (\sidewidth+3\margin,-\paperheight+0.5\margin);
   \end{tikzpicture}%
-  \begin{textblock*}{\sidewidth} (\margin,\topheight+3\margin-0.4cm)
+  \begin{textblock*}{0.8\sidewidth} (\margin,\topheight+3\margin-0.4cm)
     \begin{center}\color{#2}}{\end{center}
   \end{textblock*}
 }
@@ -113,14 +113,14 @@
       shift={(current page.north west)}, xshift=\anglesize, yshift=-\anglesize,
     ](s1){};
     \node [rectangle, draw=#2, rounded corners=0.5mm, very thick,
-      shift={(current page.north west)}, xshift=(\sidewidth+2\margin), yshift=-(\sidewidth+2\margin),
+      shift={(current page.north west)}, xshift=(\sidewidth), yshift=-(\sidewidth),
     ](s2){};
     \draw [draw=#2, very thick]
     (s1) -- (s2);
     \node[
       shift={(current page.north west)},
-      xshift=(\sidewidth+2\margin)/2,
-      yshift=-(\sidewidth+2\margin)/2,
+      xshift=(\sidewidth+\margin)/2,
+      yshift=-(\sidewidth+\margin)/2,
       chamfered rectangle, draw=#2, very thick,
       minimum size=\profilesize,
       fill=#1,
@@ -139,20 +139,10 @@
 \newcommand{\rightframe}{
   \begin{tikzpicture}[remember picture,overlay]
     \draw [draw=Black, shift={(current page.north west)}, very thick]
-    (\paperwidth-0.5\margin,-\topheight-3\margin) --
+    (\paperwidth-0.5\margin,-\topheight-\margin) --
     (\paperwidth-0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
     (\paperwidth-0.5\margin-0.5\anglesize,-\paperheight+0.5\margin) --
-    (\sidewidth+3\margin,-\paperheight+0.5\margin);
-    \end{tikzpicture}
-}
-
-\newcommand{\leftframe}[0]{
-  \begin{tikzpicture}[remember picture,overlay]
-    \draw [draw=Black, shift={(current page.north west)}, very thick]
-    (0.5\margin,-\topheight+12\margin) --
-    (0.5\margin,-\paperheight+0.5\margin+0.5\anglesize) --
-    (0.5\margin+0.5\anglesize,-\paperheight+0.5\margin) --
-    (\sidewidth+30\margin,-\paperheight+0.5\margin);
+    (\sidewidth+\margin,-\paperheight+0.5\margin);
     \end{tikzpicture}
 }
 
@@ -173,7 +163,7 @@
     at (0,0) (box1)
     {\textbf{\Large\color{#1}#2}};
     \node[very thin, anchor=east]
-    at (0.99\textwidth,0) (square)
+    at (0.99\linewidth,0) (square)
     {\textbf{\Large\color{#1}#3}};
     \path[draw=GreenIT, line width=0.5mm, inner sep=0pt] (box1) -- (square);
   \end{tikzpicture}
@@ -203,6 +193,13 @@
   \begin{flushleft}
     \textbf{#3}\\
     \small{#2\dotfill\hspace{1ex}#1}\\
+  \end{flushleft}
+}
+\newcommand{\ExperienceSmallTwo}[3]{ %Highlight color,  Ttile, Left subtitle
+  \begin{flushleft}
+    \textbf{#3}\\
+    \small{#2}\\
+    \small{#1}
   \end{flushleft}
 }
 
@@ -253,7 +250,7 @@
 % ---------------------------------------------------------------------------- %
 %                                   DOCUMENT                                   %
 % ---------------------------------------------------------------------------- %
-\def\cvSubject{\texttt{Software Engineer}}
+\def\cvSubject{\texttt{Sapeur-Pompier Volontaire}}
 \def\myName{Lucas Nouguier}
 
 \pagestyle{fancy}
@@ -268,110 +265,11 @@
 \addtolength{\topmargin}{-1.6pt}.
 
 \thispagestyle{empty}
-\input{components/header.tex}
-\input{components/sidebar.tex}
+\rightframe%
+\input{components/header-SPV.tex}
+\input{components/sidebar-SPV.tex}
 \DefineProfile{\ColorOther}{\ColorTextSide}{img/profile_bw.jpg}
-\input{components/frontMain.tex}
-
-\pagebreak
-
-\leftframe%
-
-% ---------------------------------------------------------------------------- %
-%                                  Open source                                 %
-% ---------------------------------------------------------------------------- %
-\TitleOne{\ColorHighlight}{Open source}{\faCodeBranch}
-\begin{multicols}{2}
-  \Experience{\href{https://github.com/scalacenter/scala-debug-adapter}{Scala Debuger Adapter}}{Scala Center \& personal time}{2023---.}{
-    Implementation of the Scala debugger for VS Code \& follow up of my internship at the Scala Center.
-  }
-  \Experience{\href{https://github.com/scala/scala}{Scala Collections}}{Personal time}{2023---.}{
-    Joined the \texttt{scala-collections} team to review pull-requests on Scala's collections
-  }
-
-  \columnbreak{}
-
-  \Experience{\href{https://github.com/lampepfl/dotty}{Scala 3 (Dotty)}}{Scala Center \& personal time}{2023---.}{
-    Onboarded on the compiler with the \ul{\href{https://www.scala-lang.org/blog/2022/11/02/compiler-academy.html}{compiler academy}} to work on small issues.
-  }
-\end{multicols}
-
-
-
-% ---------------------------------------------------------------------------- %
-%                                     MOOCs                                    %
-% ---------------------------------------------------------------------------- %
-\TitleOne{\ColorHighlight}{MOOCs}{\faChalkboardTeacher}
-\Experience%
-{\href{https://rockthejvm.com/courses/enrolled/1516063}{Advanced Scala}}
-{\href{https://rockthejvm.com/}{RockTheJVM}}
-{2023}
-{%
-  \begin{multicols}{3}
-    \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] Monads
-      \item[\ding{72}] Given \& Using (Implicits)
-      \item[\ding{72}] Variance
-      \item[\ding{72}] Concurrency
-      \item[\ding{72}] Type Classes
-      \item[\ding{72}] Pure functions
-    \end{ItemList}
-  \end{multicols}
-}
-
-
-
-% ---------------------------------------------------------------------------- %
-%                                 ASSOCIATIONS                                 %
-% ---------------------------------------------------------------------------- %
-\TitleOne{\ColorHighlight}{Associative}{\faIcon{share-alt}}
-
-\begin{multicols}{2}
-  \Experience{Organizer}{Sunny Tech}{2022---.}{
-    \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] \ul{\href{https://sunny-tech.io}{https://sunny-tech.io}}
-      \item[\ding{72}] Community Management (\ul{\href{https://www.linkedin.com/company/18442273}{LinkedIn}}, \ul{\href{https://twitter.com/SunnyTech_MTP}{Twitter}})
-      \item[\ding{72}] Call For Papers reviewer (450 talks)
-      \item[\ding{72}] 2023---.: Secretary
-    \end{ItemList}
-  }
-  \columnbreak{}
-  \Experience{Volunteer}{Scala Days Madrid}{Sept. 2023}{
-    \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] \ul{\href{https://scaladays.org/madrid-2023}{https://scaladays.org/madrid-2023}}
-      \item[\ding{72}] Track hosting (speaker presentation, time + Q\&A management)
-      \item[\ding{72}] Mentoring at \ul{\href{https://github.com/scalabridgelondon/scaladays-madrid-2023-scalabridge}{Scala Bridge}} (co-located event)
-    \end{ItemList}
-  }
-\end{multicols}
-\begin{multicols}{2}
-  \Experience{Organizer}{ScalaIO}{2023---.}{
-    \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] \ul{\href{https://scala.io/}{https://scala.io/}}
-    \end{ItemList}
-  }
-  \columnbreak{}
-  \null{}
-\end{multicols}
-
-
-
-% ---------------------------------------------------------------------------- %
-%                                    OTHERS                                    %
-% ---------------------------------------------------------------------------- %
-\TitleOne{\ColorHighlight}{Others}{\faLaptopCode}
-\Experience{Course}{Polytech Montpellier}{Nov. 2023}{
-  Gave a 3h course (for the first time) about building parsers with functional programing to master students, based on the \ul{\href{https://www.creativescala.org/case-study-parser/index.html}{Parser combinators}} workshop from \ul{\href{https://github.com/noelwelsh}{Noel Welsh}}. The slides are available \ul{\href{https://iusildra.github.io/reveal.js/presentations/functional-design-parser-combinators/index.html}{here}}:
-  \begin{ItemList}{\ColorHighlight}
-    \item[\ding{72}] Reminders about Scala \& Functional Programming
-    \item[\ding{72}] Design with Functional Programming (type classes)
-    \item[\ding{72}] Frequent and small exercices to apply the concepts
-  \end{ItemList}
-}
-
-\begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,inner sep=7.5pt] at (current page.south east) {\includegraphics[height=1.5cm]{img/archlinux.png}};
-\end{tikzpicture}
+\input{components/frontMain-SPV.tex}
 
 \end{document}
 

@@ -1,0 +1,58 @@
+\documentclass[a4paper,roman]{moderncv}      
+\usepackage{contour,ulem}
+\moderncvstyle{classic}
+\moderncvcolor{black}
+
+% character encoding
+\usepackage[utf8]{inputenc}
+% adjust the page margins
+\usepackage[scale=0.80]{geometry}
+
+% personal data
+\name{\href{https://www.linkedin.com/in/lucas-nouguier/}{Lucas Nouguier}}{}
+\email{lucas.nouguier@protonmail.com}
+\phone[mobile]{+33 7.81.76.81.96}               
+\address{Montpellier, Hérault, France}
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\ul}[1]{%
+	\uline{\phantom{#1}}%
+	\llap{\contour{white}{#1}}%
+}
+
+\newcommand{\bhref}[2]{\textbf{\href{#1}{#2}}}
+
+\begin{document}
+
+\recipient{Destinataire}{
+  Centre Jean Guizonnier,\\
+  624, rue de l'Agathois
+  34080 Montpellier}
+\date{\today}
+\opening{\textbf{Obj: Candidature pour un premier engagement en tant que SPV}}
+\closing{Cordialement, \vspace{-1em}}
+
+
+\makelettertitle%
+Madame, Monsieur,
+
+Futur ingénieur en informatique passionné par les technologies et diplômé du BNSSA et du PSE1 (que je renouvelle chaque année), je vous adresse ma candidature pour intégrer les Sapeurs-Pompiers de l'Hérault.
+
+Mon parcours professionnel m'a permis d'acquérir des compétences pointues en ingénierie informatique. Cependant, au-delà de l'écran, pouvoir réagir en situation d'urgence m'a conduit à suivre des formations approfondies en secourisme.
+
+Je suis conscient que la pratique sur le terrain va bien au-delà de la simple théorie enseignée en salle de formation, et c'est pour cela que je souhaite rejoindre les Sapeurs-Pompiers. D'un côté, je souhaite acquérir des compétences pratiques pour intervenir efficacement dans le cadre privé, et de l'autre, mettre à disposition ces compétences pour rendre service. Ce qui me semble d'autant plus nécessaire dans un contexte de pénurie de personnel de secours.
+
+Je suis également conscient des défis inhérents au métier de SPV. Les gardes et les interventions difficiles sont des réalités que j'accepte. Mon engagement repose sur une volonté de contribuer activement à la protection des personnes et des biens.
+
+Convaincu que mes compétences techniques et ma détermination à apprendre et à mettre en pratique seront des atouts, je me tiens à votre disposition pour la suite de la procédure.
+
+Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+\vspace{0.5cm}
+
+
+\makeletterclosing%
+
+\end{document}
