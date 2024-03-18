@@ -199,10 +199,11 @@
   \end{flushleft}
 }
 
-\newcommand{\ExperienceSmall}[3]{ %Highlight color,  Ttile, Left subtitle
+\newcommand{\ExperienceSmall}[4]{
   \begin{flushleft}
     \textbf{#3}\\
     \small{#2\dotfill\hspace{1ex}#1}\\
+    \small{#4}
   \end{flushleft}
 }
 
@@ -213,7 +214,6 @@
 % ---------------------------------------------------------------------------- %
 \newenvironment{ItemList}[1]{ % Bullet color
   \renewcommand{\descriptionlabel}[1]{%
-    \hspace{0.2cm}
     \def\temp{##1}\ifx\temp\empty%
         \hspace\labelsep{\textbf{\color{#1}\tiny\faSquare}}% Default bullet
     \else
@@ -281,16 +281,21 @@
 %                                  Open source                                 %
 % ---------------------------------------------------------------------------- %
 \TitleOne{\ColorHighlight}{Open source}{\faCodeBranch}
-\Experience{\href{https://github.com/scalacenter/scala-debug-adapter}{Scala Debuger Adapter}}{Scala Center \& personal time}{2023---.}{
-  Implementation of the Scala debugger for VS Code \& follow up of my internship at the Scala Center.
-}
-\Experience{\href{https://github.com/scala/scala}{Scala Collections}}{Personal time}{2023---.}{
-  Joined the \texttt{scala-collections} team to review pull-requests on Scala's collections
-}
+\begin{multicols}{2}
+  [\Experience{\href{https://github.com/scalacenter/scala-debug-adapter}{Scala Debuger Adapter}}{Scala Center \& personal time}{2023---.}{
+      Implementation of the Scala debugger for VS Code \& follow up of my internship at the Scala Center.
+    }]
+  \Experience{\href{https://github.com/scala/scala}{Scala Collections}}{Personal time}{2023---.}{
+    Joined the \texttt{scala-collections} team to review pull-requests on Scala's collections
+  }
 
-\Experience{\href{https://github.com/lampepfl/dotty}{Scala 3 (Dotty)}}{Scala Center \& personal time}{2023---.}{
-  Onboarded on the compiler with the \ul{\href{https://www.scala-lang.org/blog/2022/11/02/compiler-academy.html}{compiler academy}} to work on small issues.
-}
+  \columnbreak{}
+
+  \Experience{\href{https://github.com/lampepfl/dotty}{Scala 3 (Dotty)}}{Scala Center \& personal time}{2023---.}{
+    Onboarded on the compiler with the \ul{\href{https://www.scala-lang.org/blog/2022/11/02/compiler-academy.html}{compiler academy}} to work on small issues.
+  }
+
+\end{multicols}
 
 
 
@@ -300,14 +305,26 @@
 \TitleOne{\ColorHighlight}{Associative}{\faIcon{share-alt}}
 
 \begin{multicols}{2}
-  \Experience{Organizer}{Sunny Tech}{2022 --- today}{
+  [
+    \Experience{Organizer}{Sunny Tech}{2022 --- today}{
+      \begin{multicols}{2}
+        \begin{ItemList}{\ColorHighlight}
+          \item[\ding{72}] \ul{\href{https://sunny-tech.io}{https://sunny-tech.io}}
+          \item[\ding{72}] Community Management (\ul{\href{https://www.linkedin.com/company/18442273}{LinkedIn}}, \ul{\href{https://twitter.com/SunnyTech_MTP}{Twitter}})
+          \item[\ding{72}] Call For Papers reviewer (450 talks)
+          \item[\ding{72}] 2023 --- today: Secretary
+        \end{ItemList}
+      \end{multicols}
+    }
+  ]
+  \Experience{Organizer}{ScalaIO}{2023 --- today}{
     \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] \ul{\href{https://sunny-tech.io}{https://sunny-tech.io}}
-      \item[\ding{72}] Community Management (\ul{\href{https://www.linkedin.com/company/18442273}{LinkedIn}}, \ul{\href{https://twitter.com/SunnyTech_MTP}{Twitter}})
-      \item[\ding{72}] Call For Papers reviewer (450 talks)
-      \item[\ding{72}] 2023 --- today: Secretary
+      \item[\ding{72}] \ul{\href{https://scala.io}{https://scala.io}}
+      \item[\ding{72}] Call For Papers reviewer
     \end{ItemList}
+    \null{}
   }
+  \null{}
   \columnbreak{}
   \Experience{Volunteer}{Scala Days Madrid}{Sept. 2023}{
     \begin{ItemList}{\ColorHighlight}
@@ -316,15 +333,6 @@
       \item[\ding{72}] Mentoring at \ul{\href{https://github.com/scalabridgelondon/scaladays-madrid-2023-scalabridge}{Scala Bridge}} (co-located event)
     \end{ItemList}
   }
-\end{multicols}
-\begin{multicols}{2}
-  \Experience{Organizer}{ScalaIO}{2023 --- today}{
-    \begin{ItemList}{\ColorHighlight}
-      \item[\ding{72}] \ul{\href{https://scala.io}{https://scala.io}}
-      \item[\ding{72}] Call For Papers reviewer
-    \end{ItemList}
-  }
-  \columnbreak{}
   \null{}
 \end{multicols}
 
@@ -334,18 +342,17 @@
 %                                    OTHERS                                    %
 % ---------------------------------------------------------------------------- %
 \TitleOne{\ColorHighlight}{Others}{\faLaptopCode}
-\Experience{Website maintainer}{ScalaIO}{Dec. 2023 --- today}{
+\Experience{Website maintainer (\ul{\href{https://scala.io}{https://scala.io}})}{ScalaIO}{Dec. 2023 --- today}{
   \textit{Scala, Scala.js, Laminar, Sass, Github Actions, Clever Cloud}
   \vspace{0.25cm}
 
-  Continued the work of the previous maintainer to rework the website with \ul{\href{https://www.scala-js.org/}{Scala.js}} and \ul{\href{https://laminar.dev/}{Laminar}} to build reactive SPA (Single-Page Application) with Scala. Used the \ul{\href{https://sass-lang.com}{Sass}} pre-processor to style the website.
+  Continued the work of the previous maintainer to rework the website with \ul{\href{https://www.scala-js.org}{Scala.js}} and \ul{\href{https://laminar.dev}{Laminar}} to build a reactive SPA (Single-Page Application) with Scala. Used \ul{\href{https://sass-lang.com}{Sass}} to style the website.
   \begin{ItemList}{\ColorHighlight}
     \item[\ding{226}] Github Actions
     \item[\ding{226}] Clever Cloud deployment
-    \item[\ding{226}] CSS Selectors
+    \item[\ding{226}] Web apps performance metrics
   \end{ItemList}
 
-  Website URL: \ul{\href{https://scala.io}{https://scala.io}}\\
   Github repo: \ul{\href{https://github.com/ScalaIO/scala.io}{https://github.com/ScalaIO/scala.io}}
 }
 \Experience{Course}{Polytech Montpellier}{Nov. 2023}{
@@ -359,7 +366,7 @@
     \item[\ding{226}] Frequent and small exercices to apply the concepts
   \end{ItemList}
 
-  The slides are available at \ul{\href{https://iusildra.github.io/reveal.js/presentations/functional-design-parser-combinators/index.html}{https://iusildra.github.io/reveal.js/presentations/functional-design-parser-combinators/index.html}}
+  Slides: \ul{\href{https://iusildra.github.io/reveal.js/presentations/functional-design-parser-combinators/index.html}{https://iusildra.github.io/reveal.js/presentations/functional-design-parser-combinators/index.html}}
 }
 
 \begin{tikzpicture}[remember picture,overlay]
