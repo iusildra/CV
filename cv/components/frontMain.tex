@@ -18,14 +18,19 @@
   % -------------------------------- Experiences ------------------------------- %
   \TitleOne{\ColorHighlight}{Experiences}{\faSuitcase}
   \Experience%
-  {Assistant Software Engineer}
+  {Software Engineer}
   {Teads France}
   {Mar. 2024 --- today}
   {
     \textit{Scala, TypeScript, gRPC, Git, GitHub, Appium, Docker, AWS, Terraform, Grafana, Elastic Kibana, Jenkins}
 
     \begin{ItemList}{\ColorHighlight}
-      \item[\ding{226}] Rewrote a legacy service that allows encoding ads' videos in different formats (to be able to deliver the optimal format for the user), with a focus on execution flow improvements, test coverage, 0-downtime migration, and 0 impact for users.
+      \item[\ding{226}] Reworked the way videos were transcoded (~400 transcoding / week), by replacing a third-party service with an AWS service (MediaConvert) to enable adaptive streaming and reduce network costs
+      \begin{itemize}
+        \item Setup a whole CI pipeline to test the transcoding process with an automated perceived quality test from Netflix's VMAF
+        \item Setup the infrastructure (with Terraform) for the event-driven architecture and the monitoring (Grafana, CloudWatch): event rules, queues, lambdas, alarms\dots
+        \item Double run migration to ensure the new service was working correctly
+      \end{itemize}
       \item[\ding{226}] Cleaned up and refactored a TypeScript project, with a data-driven approach to avoid regressions (using A/B testing) and library updates.
     \end{ItemList}
   }
@@ -52,16 +57,16 @@
       \item[\ding{226}] Compiler-related problems: type checking, types \& overloads resolution\dots
     \end{ItemList}
   }
-  \Experience%
-  {Assistant Software Engineer}
-  {Teads France}
-  {Jun. 2022 --- Aug. 2022}
-  {
-    \textit{Scala, Cats-Effect, gRPC, MySQL, React (TS), Git, Cypress}
+  % \Experience%
+  % {Assistant Software Engineer}
+  % {Teads France}
+  % {Jun. 2022 --- Aug. 2022}
+  % {
+  %   \textit{Scala, Cats-Effect, gRPC, MySQL, React (TS), Git, Cypress}
 
-    \vspace{0.5\baselineskip}
-    Full-stack development of the new version of their demo application. Handled each feature from the database to the UI (code, test, deploy)
-  }
+  %   \vspace{0.5\baselineskip}
+  %   Full-stack development of the new version of their demo application. Handled each feature from the database to the UI (code, test, deploy)
+  % }
   \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south east, inner sep=0pt] at (current page.south east) {\includegraphics[width=2cm, angle=180]{img/tux.png}};
   \end{tikzpicture}
