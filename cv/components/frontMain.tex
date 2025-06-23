@@ -8,10 +8,10 @@
       Enthusiastic baby software engineer, I enjoy learning new things and tend to go `in depth' rather than `in breadth'. I love going to meetups and conferences
 
       \vspace{0.5\baselineskip}
-      Scala and functional programming are my current passions even though I recently discovered with Scala.IO's website that CSS can be fun
+      Scala and functional programming are my current tech passions even though I recently discovered with Scala.IO's website that CSS can be fun
 
       \vspace{0.5\baselineskip}
-      ArchLinux user, I enjoy using the command line for a better understanding of the tools I'm using and spending hours tweaking my system according to my needs
+      (ex-)ArchLinux user, I enjoy using the command line for a better understanding of the tools I'm using and spending hours tweaking my system according to my needs
     \end{flushleft}
   }
 
@@ -27,11 +27,11 @@
     \begin{ItemList}{\ColorHighlight}
       \item[\ding{226}] Reworked the way videos were transcoded (~400 transcoding / week), by replacing a third-party service with an AWS service (MediaConvert) to enable adaptive streaming and reduce network costs
       \begin{itemize}
-        \item Setup a whole CI pipeline to test the transcoding process with an automated perceived quality test from Netflix's VMAF
-        \item Setup the infrastructure (with Terraform) for the event-driven architecture and the monitoring (Grafana, CloudWatch): event rules, queues, lambdas, alarms\dots
-        \item Double run migration to ensure the new service was working correctly
+        \item Setup a CI pipeline to test the transcoding process with an automated perceived quality test from Netflix's VMAF
+        \item Setup the infrastructure (with Terraform) for the event-driven architecture and the monitoring: queues, lambdas, alarms\dots
+        \item Double run to ensure the new service was working correctly
       \end{itemize}
-      \item[\ding{226}] Cleaned up and refactored a TypeScript project, with a data-driven approach to avoid regressions (using A/B testing) and library updates.
+      \item[\ding{226}] Migrated the `format' CI/deploy pipeline from Jenkins to GitHub Actions, and improved the DX at the same time (parallelization, better error messages). It helped in implementing a rollback mechanism in case of urgency
     \end{ItemList}
   }
   \Experience%
@@ -41,10 +41,8 @@
   {
     \textit{Encryption, Rust, Docker, Scaleway}
 
-    End of studies project
-
     \vspace{0.5\baselineskip}
-    R\&D on advanced encryption methods
+    End of studies project. R\&D on advanced encryption methods
   }
   \Experience%
   {\href{https://github.com/scalacenter/scala-debug-adapter/pulls?q=is\%3Apr+author\%3Aiusildra+}{Software Engineer Intern (link)}}
